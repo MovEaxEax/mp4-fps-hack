@@ -608,6 +608,7 @@ int main(int argc, char* argv[])
     if (argc == 1)
     {
         menu_help();
+        return 1;
     }
 
     if (argc > 1)
@@ -616,10 +617,12 @@ int main(int argc, char* argv[])
         if (file_input == "-version" || file_input == "--version" || file_input == "-v" || file_input == "--v")
         {
             menu_version();
+            return 1;
         }
         if (file_input == "-help" || file_input == "--help" || file_input == "-?" || file_input == "--?")
         {
             menu_help();
+            return 1;
         }
         if (file_input.find("\\") == std::string::npos)
         {
@@ -638,6 +641,7 @@ int main(int argc, char* argv[])
     else
     {
         std::cout << "[ERROR] Missing argument 2 - no output_file is specified" << std::endl;
+        return -1;
     }
 
     if (argc > 3)
@@ -648,11 +652,13 @@ int main(int argc, char* argv[])
             if (mode < 1 || mode > 3)
             {
                 std::cout << "[ERROR] Argument 3 mode (" << argv[3] << ") is has to be either 1, 2 or 3." << std::endl;
+                return -2;
             }
         }
         catch (const std::exception& e)
         {
             std::cout << "[ERROR] Argument 3 mode (" << argv[3] << ") is invalid." << std::endl;
+            return -3;
         }
     }
 
@@ -664,11 +670,13 @@ int main(int argc, char* argv[])
             if (channel_video < 0 || channel_video > 2)
             {
                 std::cout << "[ERROR] Argument 4 video channel (" << argv[3] << ") is has to be between 0 and 2" << std::endl;
+                return -4;
             }
         }
         catch (const std::exception& e)
         {
             std::cout << "[ERROR] Argument 4 video channel (" << argv[4] << ") is invalid." << std::endl;
+            return -5;
         }
     }
 
@@ -680,11 +688,13 @@ int main(int argc, char* argv[])
             if (channel_audio < 0 || channel_audio > 2)
             {
                 std::cout << "[ERROR] Argument 5 audio channel (" << argv[3] << ") is has to be between 0 and 2" << std::endl;
+                return -6;
             }
         }
         catch (const std::exception& e)
         {
             std::cout << "[ERROR] Argument 5 audio channel (" << argv[5] << ") is invalid." << std::endl;
+            return -7;
         }
     }
 
@@ -701,11 +711,13 @@ int main(int argc, char* argv[])
             if (target_fps < 0 || target_fps > 300)
             {
                 std::cout << "[ERROR] Argument 7 fps (" << argv[3] << ") is has to be between 0 and 300" << std::endl;
+                return -8;
             }
         }
         catch (const std::exception& e)
         {
             std::cout << "[ERROR] Argument 7 fps (" << argv[5] << ") is invalid." << std::endl;
+            return -9;
         }
     }
     
@@ -718,6 +730,7 @@ int main(int argc, char* argv[])
     if (system("where ffmpeg >nul 2>nul") == 0)
     {
         std::cout << "[ERROR] ffmpeg installation not found, make sure it's installed and set to PATH variable" << std::endl;
+        return -10;
     }
 
     std::vector<char> tmp_data;
@@ -826,7 +839,7 @@ int main(int argc, char* argv[])
 
 
 
-    return 0;
+    return 1;
 }
 
 
