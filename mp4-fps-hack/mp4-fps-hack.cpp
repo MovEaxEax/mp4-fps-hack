@@ -540,7 +540,7 @@ std::string get_working_directory()
 
 void menu_version()
 {
-    std::cout << "MP4 FPS Hack - Version: 1.0" << std::endl;
+    std::cout << "MP4 FPS Hack - Version: 1.1" << std::endl;
 }
 
 void menu_help()
@@ -726,12 +726,6 @@ int main(int argc, char* argv[])
 
 
     // ARC 2: FFMPEG the big hero
-
-    if (system("where ffmpeg >nul 2>nul") == 0)
-    {
-        std::cout << "[ERROR] ffmpeg installation not found, make sure it's installed and set to PATH variable" << std::endl;
-        return -10;
-    }
 
     std::vector<char> tmp_data;
     if (file_input.find(".mp4") == std::string::npos)
