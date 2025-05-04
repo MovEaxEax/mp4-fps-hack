@@ -8,6 +8,10 @@ It will run only on smartphone player as 60fps. If run in browser, the video wil
 ## Core features
 Select a video and a target fps rate, and it will convert the video. If run with minimal parameter it will always use 30 fps settings.
 
+## Requirements
+1. This tool is windows only. If you need it on another system, you will need to fork and edit, I don't plan to support other platforms.
+2. FFMPEG has to be installed on the system and set to PATH variable (Hit google with 'ffmpeg download')
+
 ## Important notes
 This is a very experimental tool. Possible bugs and sync problem are expected, if used with differnet frame rates and edge case encoder settings.
 
